@@ -257,11 +257,112 @@
             }
         }
 
-       
+        .pdf-mode {
+            width: 794px;
+            margin: 0;
+            box-shadow: none;
+        }
+
+        .pdf-mode header {
+            padding: 20px 28px 16px;
+        }
+
+        .pdf-mode h1 {
+            font-size: 2.2rem;
+            margin-bottom: 6px;
+        }
+
+        .pdf-mode .intro {
+            font-size: 0.82rem;
+            margin-bottom: 10px;
+            line-height: 1.35;
+        }
+
+        .pdf-mode .contact {
+            font-size: 0.76rem;
+            gap: 5px 14px;
+        }
+
+        .pdf-mode main {
+            min-height: 0;
+        }
+
+        .pdf-mode .content {
+            padding: 18px 28px 22px;
+        }
+
+        .pdf-mode aside {
+            padding: 18px 18px 22px;
+        }
+
+        .pdf-mode section + section {
+            margin-top: 18px;
+        }
+
+        .pdf-mode h2 {
+            font-size: 0.66rem;
+            margin-bottom: 10px;
+        }
+
+        .pdf-mode .job {
+            padding-left: 17px;
+        }
+
+        .pdf-mode .job + .job {
+            margin-top: 12px;
+        }
+
+        .pdf-mode .job::before {
+            top: 5px;
+            width: 7px;
+            height: 7px;
+            left: -4.5px;
+        }
+
+        .pdf-mode .job h3 {
+            font-size: 0.9rem;
+        }
+
+        .pdf-mode .meta {
+            font-size: 0.74rem;
+            margin: 2px 0 5px;
+        }
+
+        .pdf-mode ul {
+            font-size: 0.76rem;
+            line-height: 1.3;
+        }
+
+        .pdf-mode li + li {
+            margin-top: 2px;
+        }
+
+        .pdf-mode .side-block + .side-block {
+            margin-top: 15px;
+        }
+
+        .pdf-mode .education-item,
+        .pdf-mode .language,
+        .pdf-mode .tag {
+            font-size: 0.74rem;
+        }
+
+        .pdf-mode .language {
+            padding: 4px 0;
+        }
+
+        .pdf-mode .tag {
+            padding: 3px 6px;
+        }
+
+        .pdf-mode footer {
+            display: none !important;
+        }
+
         @media print {
             @page {
                 size: A4;
-                margin: 10mm;
+                margin: 7mm;
             }
 
             body {
@@ -275,31 +376,87 @@
             }
 
             header {
-                padding: 28px 34px 24px;
+                padding: 18px 26px 14px;
             }
 
             .content {
-                padding: 28px 34px 34px;
+                padding: 18px 26px 24px;
             }
 
             aside {
-                padding: 28px 24px 34px;
+                padding: 18px 18px 24px;
+            }
+
+            body {
+                font-size: 9px;
+                line-height: 1.35;
+            }
+
+            h1 {
+                font-size: 2.35rem;
+            }
+
+            .intro {
+                font-size: 0.88rem;
+                margin-bottom: 12px;
+            }
+
+            .contact {
+                font-size: 0.8rem;
+                gap: 6px 14px;
+            }
+
+            h2 {
+                font-size: 0.68rem;
+                margin-bottom: 10px;
+            }
+
+            .job h3 {
+                font-size: 0.92rem;
+            }
+
+            .meta {
+                font-size: 0.76rem;
+                margin: 2px 0 6px;
+            }
+
+            li + li {
+                margin-top: 2px;
+            }
+
+            .side-block + .side-block {
+                margin-top: 16px;
+            }
+
+            .language {
+                padding: 5px 0;
+            }
+
+            .tag {
+                padding: 4px 7px;
+                font-size: 0.72rem;
             }
 
             footer {
-                display: block;
-            }
-
-            .download-btn {
                 display: none;
             }
 
+            .download-btn,
+            .pdf-generating .download-btn {
+                display: none;
+            }
+
+            .pdf-generating {
+                padding: 0;
+                border-top: 0;
+            }
+
             section + section {
-                margin-top: 28px;
+                margin-top: 18px;
             }
 
             .job + .job {
-                margin-top: 20px;
+                margin-top: 12px;
             }
         }
     </style>
@@ -446,12 +603,58 @@
         <footer>
             CV - Tristan Meszaros
 
-            <a class="download-btn" href="CV_Tristan_Meszaros.pdf" download>
+            <a class="download-btn" href="#" id="download-pdf">
                 Télécharger le CV en PDF
             </a>
         </footer>
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script>
+        document.getElementById("download-pdf").addEventListener("click", async function (event) {
+            event.preventDefault();
+
+            const button = this;
+            const page = document.querySelector(".page");
+            button.textContent = "Génération du PDF…";
+            button.style.pointerEvents = "none";
+
+            // Compacte le CV uniquement pendant la génération afin qu'il tienne
+            // sur une seule page A4. Le bouton est totalement exclu du PDF.
+            page.classList.add("pdf-mode");
+
+            const options = {
+                margin: 0,
+                filename: "CV_Tristan_Meszaros.pdf",
+                image: { type: "jpeg", quality: 0.98 },
+                html2canvas: {
+                    scale: 2,
+                    useCORS: true,
+                    backgroundColor: "#ffffff",
+                    scrollX: 0,
+                    scrollY: 0
+                },
+                jsPDF: {
+                    unit: "mm",
+                    format: "a4",
+                    orientation: "portrait"
+                },
+                pagebreak: { mode: ["css", "legacy"] }
+            };
+
+            try {
+                await html2pdf().set(options).from(page).save();
+            } catch (error) {
+                console.error("Erreur lors de la génération du PDF :", error);
+                alert("Impossible de générer le PDF. Réessayez.");
+            } finally {
+                page.classList.remove("pdf-mode");
+                button.textContent = "Télécharger le CV en PDF";
+                button.style.pointerEvents = "auto";
+            }
+        });
+    </script>
 </body>
 
 </html>
