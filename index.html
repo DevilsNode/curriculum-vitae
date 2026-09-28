@@ -459,10 +459,19 @@
                 margin-top: 12px;
             }
         }
+
+
+        /* Mode sombre */
+        body.dark { --ink:#f5f5f5; --muted:#a0a0a0; --line:#333333; --soft:#1e1e1e; --white:#121212; }
+        #darkModeBtn { position:fixed; top:20px; right:20px; width:45px; height:45px; border:none; border-radius:50%; background:#172033; color:white; font-size:20px; cursor:pointer; box-shadow:0 4px 12px rgba(0,0,0,.15); z-index:1000; transition:transform .2s, background .2s; }
+        #darkModeBtn:hover { transform:scale(1.08); }
+        body.dark #darkModeBtn { background:#f5f5f5; color:#172033; }
+        @media print { #darkModeBtn { display:none !important; } }
     </style>
 </head>
 
 <body>
+    <button id="darkModeBtn" aria-label="Activer le mode sombre">☾</button>
     <div class="page">
 
 
@@ -650,6 +659,28 @@
                 page.classList.remove("pdf-mode");
                 button.textContent = "Télécharger le CV en PDF";
                 button.style.pointerEvents = "auto";
+            }
+        });
+
+        const darkModeBtn = document.getElementById("darkModeBtn");
+
+        if (localStorage.getItem("darkMode") === "enabled") {
+            document.body.classList.add("dark");
+            darkModeBtn.textContent = "☼";
+            darkModeBtn.setAttribute("aria-label", "Désactiver le mode sombre");
+        }
+
+        darkModeBtn.addEventListener("click", function () {
+            document.body.classList.toggle("dark");
+
+            if (document.body.classList.contains("dark")) {
+                localStorage.setItem("darkMode", "enabled");
+                darkModeBtn.textContent = "☼";
+                darkModeBtn.setAttribute("aria-label", "Désactiver le mode sombre");
+            } else {
+                localStorage.setItem("darkMode", "disabled");
+                darkModeBtn.textContent = "☾";
+                darkModeBtn.setAttribute("aria-label", "Activer le mode sombre");
             }
         });
     </script>
