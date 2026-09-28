@@ -725,18 +725,28 @@
 
             const button = this;
             const page = document.querySelector(".page");
+            const wasDark = document.body.classList.contains("dark");
+
             button.textContent = "Génération du PDF…";
             button.style.pointerEvents = "none";
 
+            document.body.classList.remove("dark");
             page.classList.add("pdf-mode");
+            page.style.animation = "none";
+            page.style.transform = "none";
+            page.style.opacity = "1";
 
             const options = {
                 margin: 0,
                 filename: "CV_Tristan_Meszaros.pdf",
-                image: { type: "pdf", quality: 1 },
+                image: {
+                    type: "jpeg",
+                    quality: 1
+                },
                 html2canvas: {
                     scale: 2,
                     useCORS: true,
+                    allowTaint: true,
                     backgroundColor: "#ffffff",
                     scrollX: 0,
                     scrollY: 0
@@ -746,7 +756,9 @@
                     format: "a4",
                     orientation: "portrait"
                 },
-                pagebreak: { mode: ["css", "legacy"] }
+                pagebreak: {
+                    mode: ["css", "legacy"]
+                }
             };
 
             try {
@@ -756,6 +768,14 @@
                 alert("Impossible de générer le PDF. Réessayez.");
             } finally {
                 page.classList.remove("pdf-mode");
+                page.style.animation = "";
+                page.style.transform = "";
+                page.style.opacity = "";
+
+                if (wasDark) {
+                    document.body.classList.add("dark");
+                }
+
                 button.textContent = "Télécharger le CV en PDF";
                 button.style.pointerEvents = "auto";
             }
