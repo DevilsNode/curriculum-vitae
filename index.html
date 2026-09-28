@@ -499,7 +499,7 @@
                                 Traitement d'une campagne d'appels entrants pour le client ANTAI.
                             </li>
                             <li>
-                                Contribution à la campagne d'appels sortants d'Eau de Paris
+                                Contribution à la campagne d'appels sortants pour le client Eau de Paris
                                 et utilisation occasionnelle de l'anglais.
                             </li>
                         </ul>
@@ -620,14 +620,12 @@
             button.textContent = "Génération du PDF…";
             button.style.pointerEvents = "none";
 
-            // Compacte le CV uniquement pendant la génération afin qu'il tienne
-            // sur une seule page A4. Le bouton est totalement exclu du PDF.
             page.classList.add("pdf-mode");
 
             const options = {
                 margin: 0,
                 filename: "CV_Tristan_Meszaros.pdf",
-                image: { type: "jpeg", quality: 1 },
+                image: { type: "pdf", quality: 1 },
                 html2canvas: {
                     scale: 2,
                     useCORS: true,
