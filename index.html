@@ -1,307 +1,56 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="CV de Tristan Meszaros">
-  <title>Tristan Meszaros — CV</title>
-  <style>
-    :root {
-      --ink: #172033;
-      --muted: #667085;
-      --line: #e5e7eb;
-      --accent: #2f5bea;
-      --soft: #f5f7fb;
-      --white: #ffffff;
-    }
-
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      background: #eef1f5;
-      color: var(--ink);
-      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-                   Helvetica, Arial, sans-serif;
-      line-height: 1.55;
-    }
-
-    .page {
-      width: min(100%, 1000px);
-      margin: 36px auto;
-      background: var(--white);
-      box-shadow: 0 18px 50px rgba(23, 32, 51, 0.10);
-    }
-
-    header {
-      padding: 48px 54px 38px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    h1 {
-      margin: 0 0 8px;
-      font-size: clamp(2.2rem, 5vw, 3.5rem);
-      letter-spacing: -0.04em;
-      line-height: 1;
-    }
-
-    .intro {
-      margin: 0 0 22px;
-      max-width: 680px;
-      color: var(--muted);
-      font-size: 1.05rem;
-    }
-
-    .contact {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px 22px;
-      color: var(--ink);
-      font-size: 0.95rem;
-    }
-
-    .contact a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .contact a:hover { color: var(--accent); }
-
-    main {
-      display: grid;
-      grid-template-columns: minmax(0, 1.65fr) minmax(240px, 0.75fr);
-    }
-
-    .content {
-      padding: 38px 54px 54px;
-    }
-
-    aside {
-      padding: 38px 34px 54px;
-      background: var(--soft);
-      border-left: 1px solid var(--line);
-    }
-
-    section + section { margin-top: 40px; }
-
-    h2 {
-      margin: 0 0 22px;
-      font-size: 0.82rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--accent);
-    }
-
-    .job {
-      position: relative;
-      padding-left: 22px;
-      border-left: 2px solid var(--line);
-    }
-
-    .job + .job { margin-top: 28px; }
-
-    .job::before {
-      content: "";
-      position: absolute;
-      width: 9px;
-      height: 9px;
-      left: -5.5px;
-      top: 6px;
-      border-radius: 50%;
-      background: var(--accent);
-    }
-
-    .job h3 {
-      margin: 0;
-      font-size: 1.08rem;
-    }
-
-    .meta {
-      margin: 3px 0 10px;
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-
-    ul {
-      margin: 0;
-      padding-left: 18px;
-    }
-
-    li + li { margin-top: 5px; }
-
-    .side-block + .side-block { margin-top: 34px; }
-
-    .education-item strong {
-      display: block;
-      margin-bottom: 3px;
-    }
-
-    .education-item span {
-      display: block;
-      color: var(--muted);
-    }
-
-    .language {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 9px 0;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .language:last-child { border-bottom: 0; }
-
-    .level {
-      color: var(--muted);
-      text-align: right;
-      white-space: nowrap;
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .tag {
-      padding: 6px 10px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: var(--white);
-      font-size: 0.88rem;
-    }
-
-    footer {
-      padding: 18px 54px;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 0.8rem;
-      text-align: center;
-    }
-
-    @media (max-width: 760px) {
-      .page { margin: 0; box-shadow: none; }
-      header { padding: 34px 26px 28px; }
-      main { grid-template-columns: 1fr; }
-      .content { padding: 32px 26px 42px; }
-      aside {
-        padding: 32px 26px 42px;
-        border-left: 0;
-        border-top: 1px solid var(--line);
-      }
-      footer { padding: 16px 26px; }
-    }
-
-    @media print {
-      @page { size: A4; margin: 10mm; }
-      body { background: white; }
-      .page {
-        width: 100%;
-        margin: 0;
-        box-shadow: none;
-      }
-      header { padding: 28px 34px 24px; }
-      .content { padding: 28px 34px 34px; }
-      aside { padding: 28px 24px 34px; }
-      footer { display: none; }
-      section + section { margin-top: 28px; }
-      .job + .job { margin-top: 20px; }
-      a { color: inherit !important; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="CV de Tristan Meszaros">
+<title>Tristan Meszaros — CV</title>
+<style>
+:root{--ink:#172033;--muted:#667085;--line:#e5e7eb;--accent:#7c3aed;--soft:#f5f7fb;--white:#fff}
+*{box-sizing:border-box} body{margin:0;background:#eef1f5;color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.55}
+.page{width:min(100%,1000px);margin:36px auto;background:#fff;box-shadow:0 18px 50px rgba(23,32,51,.1)}
+header{padding:48px 54px 38px;border-bottom:1px solid var(--line)}
+h1{margin:0 0 8px;font-size:clamp(2.2rem,5vw,3.5rem);letter-spacing:-.04em;line-height:1}
+.intro{margin:0 0 22px;max-width:680px;color:var(--muted);font-size:1.05rem}
+.contact{display:flex;flex-wrap:wrap;gap:10px 22px;color:var(--ink);font-size:.95rem}.contact a{color:inherit;text-decoration:none}.contact a:hover{color:var(--accent)}
+.download-btn{display:block;width:max-content;margin:28px auto 0;padding:11px 18px;border-radius:9px;background:var(--accent);color:#fff!important;text-decoration:none;font-weight:600;font-size:.92rem;transition:opacity .2s,transform .2s}.download-btn:hover{opacity:.9;transform:translateY(-1px)}
+main{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(240px,.75fr)}.content{padding:38px 54px 54px}aside{padding:38px 34px 54px;background:var(--soft);border-left:1px solid var(--line)}
+section+section{margin-top:40px}h2{margin:0 0 22px;font-size:.82rem;text-transform:uppercase;letter-spacing:.16em;color:var(--accent)}
+.job{position:relative;padding-left:22px;border-left:2px solid var(--line)}.job+.job{margin-top:28px}.job:before{content:"";position:absolute;width:9px;height:9px;left:-5.5px;top:6px;border-radius:50%;background:var(--accent)}
+.job h3{margin:0;font-size:1.08rem}.meta{margin:3px 0 10px;color:var(--muted);font-size:.9rem}ul{margin:0;padding-left:18px}li+li{margin-top:5px}
+.side-block+.side-block{margin-top:34px}.education-item strong{display:block;margin-bottom:3px}.education-item span{display:block;color:var(--muted)}
+.language{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--line)}.language:last-child{border-bottom:0}.level{color:var(--muted);text-align:right;white-space:nowrap}
+.tags{display:flex;flex-wrap:wrap;gap:8px}.tag{padding:6px 10px;border:1px solid var(--line);border-radius:999px;background:#fff;font-size:.88rem}
+footer{padding:18px 54px;border-top:1px solid var(--line);color:var(--muted);font-size:.8rem;text-align:center}
+@media(max-width:760px){.page{margin:0;box-shadow:none}header{padding:34px 26px 28px}main{grid-template-columns:1fr}.content{padding:32px 26px 42px}aside{padding:32px 26px 42px;border-left:0;border-top:1px solid var(--line)}footer{padding:16px 26px}}
+@media print{@page{size:A4;margin:10mm}body{background:#fff}.page{width:100%;margin:0;box-shadow:none}header{padding:28px 34px 24px}.content{padding:28px 34px 34px}aside{padding:28px 24px 34px}footer{display:block}.download-btn{display:none}section+section{margin-top:28px}.job+.job{margin-top:20px}}
+</style>
 </head>
-
 <body>
-  <div class="page">
-    <header>
-      <h1>Tristan Meszaros</h1>
-      <p class="intro">
-        Volontaire, ponctuel et soucieux de bien faire, je suis motivé à travailler,
-        à développer mes compétences et à acquérir de nouvelles connaissances.
-      </p>
-      <div class="contact" aria-label="Coordonnées">
-        <a href="tel:+33781992503">+33 7 81 99 25 03</a>
-        <a href="mailto:tr.meszaros@gmail.com">tr.meszaros@gmail.com</a>
-        <span>Metz</span>
-      </div>
-    </header>
+<div class="page">
+<header>
+<h1>Tristan Meszaros</h1>
+<p class="intro">Volontaire, ponctuel et soucieux de bien faire, je suis motivé à travailler, à développer mes compétences et à acquérir de nouvelles connaissances.</p>
+<div class="contact" aria-label="Coordonnées">
+<a href="tel:+33781992503">+33 7 81 99 25 03</a>
+<a href="mailto:tr.meszaros@gmail.com">tr.meszaros@gmail.com</a><span>Metz</span>
+</div>
 
-    <main>
-      <div class="content">
-        <section>
-          <h2>Expériences</h2>
-
-          <article class="job">
-            <h3>Technicien / réalisateur en radio</h3>
-            <div class="meta">RCF Jerico Moselle · Service civique · sept. 2022 – juin 2023</div>
-            <ul>
-              <li>Réalisation d'enregistrements d'émissions en studio ou à l'extérieur avec du matériel portable.</li>
-              <li>Montage des émissions afin de les programmer pour leur diffusion.</li>
-            </ul>
-          </article>
-
-          <article class="job">
-            <h3>Assistant son</h3>
-            <div class="meta">Tournage du film <em>Annexions</em> · févr. 2023 – mars 2023</div>
-            <ul>
-              <li>Prise de son aux côtés d'un ingénieur du son professionnel polonais dans le cadre d'un film Erasmus+ diffusé en ciné-concert.</li>
-              <li>Utilisation quotidienne de l'anglais.</li>
-            </ul>
-          </article>
-
-          <article class="job">
-            <h3>Agent d'accueil</h3>
-            <div class="meta">Le Met' — réseau de transport en commun · sept. 2023 – sept. 2024</div>
-            <ul>
-              <li>Vente et présentation des différents services et produits en fonction des besoins des usagers.</li>
-              <li>Gestion des commandes en ligne et utilisation quotidienne de l'anglais.</li>
-            </ul>
-          </article>
-
-          <article class="job">
-            <h3>Téléconseiller</h3>
-            <div class="meta">TESSI — centre de relation client · févr. 2025 – sept. 2025</div>
-            <ul>
-              <li>Traitement d'une campagne d'appels entrants pour le client ANTAI.</li>
-              <li>Contribution à la campagne d'appels sortants d'Eau de Paris et utilisation occasionnelle de l'anglais.</li>
-            </ul>
-          </article>
-        </section>
-      </div>
-
-      <aside>
-        <section class="side-block">
-          <h2>Formation</h2>
-          <div class="education-item">
-            <strong>Baccalauréat général</strong>
-            <span>Lycée de la Communication</span>
-            <span>LLCE anglais</span>
-            <span>Cinéma-audiovisuel</span>
-          </div>
-        </section>
-
-        <section class="side-block">
-          <h2>Langues</h2>
-          <div class="language"><span>Français</span><span class="level">Langue maternelle</span></div>
-          <div class="language"><span>Anglais</span><span class="level">C2</span></div>
-          <div class="language"><span>Espagnol</span><span class="level">B1</span></div>
-        </section>
-
-        <section class="side-block">
-          <h2>Centres d'intérêt</h2>
-          <div class="tags">
-            <span class="tag">Informatique</span>
-            <span class="tag">Anglais</span>
-            <span class="tag">Audiovisuel</span>
-            <span class="tag">Musique</span>
-          </div>
-        </section>
-      </aside>
-    </main>
-
-    <footer>
-      CV — Tristan Meszaros
-    </footer>
-  </div>
+</header>
+<main>
+<div class="content"><section><h2>Expériences</h2>
+<article class="job"><h3>Technicien / réalisateur en radio</h3><div class="meta">RCF Jerico Moselle · Service civique · sept. 2022 – juin 2023</div><ul><li>Réalisation d'enregistrements d'émissions en studio ou à l'extérieur avec du matériel portable.</li><li>Montage des émissions afin de les programmer pour leur diffusion.</li></ul></article>
+<article class="job"><h3>Assistant son</h3><div class="meta">Tournage du film <em>Annexions</em> · févr. 2023 – mars 2023</div><ul><li>Prise de son aux côtés d'un ingénieur du son professionnel polonais dans le cadre d'un film Erasmus+ diffusé en ciné-concert.</li><li>Utilisation quotidienne de l'anglais.</li></ul></article>
+<article class="job"><h3>Agent d'accueil</h3><div class="meta">Le Met' — réseau de transport en commun · sept. 2023 – sept. 2024</div><ul><li>Vente et présentation des différents services et produits en fonction des besoins des usagers.</li><li>Gestion des commandes en ligne et utilisation quotidienne de l'anglais.</li></ul></article>
+<article class="job"><h3>Téléconseiller</h3><div class="meta">TESSI — centre de relation client · févr. 2025 – sept. 2025</div><ul><li>Traitement d'une campagne d'appels entrants pour le client ANTAI.</li><li>Contribution à la campagne d'appels sortants d'Eau de Paris et utilisation occasionnelle de l'anglais.</li></ul></article>
+</section></div>
+<aside>
+<section class="side-block"><h2>Formation</h2><div class="education-item"><strong>Baccalauréat général</strong><span>Lycée de la Communication</span><span>LLCE anglais</span><span>Cinéma-audiovisuel</span></div></section>
+<section class="side-block"><h2>Langues</h2><div class="language"><span>Français</span><span class="level">Langue maternelle</span></div><div class="language"><span>Anglais</span><span class="level">C2</span></div><div class="language"><span>Espagnol</span><span class="level">B1</span></div></section>
+<section class="side-block"><h2>Centres d'intérêt</h2><div class="tags"><span class="tag">Informatique</span><span class="tag">Anglais</span><span class="tag">Audiovisuel</span><span class="tag">Musique</span></div></section>
+</aside>
+</main>
+<footer>CV — Tristan Meszaros<br><a class="download-btn" href="CV_Tristan_Meszaros.pdf" download>Télécharger le CV en PDF</a></footer>
+</div>
 </body>
 </html>
