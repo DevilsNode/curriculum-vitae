@@ -376,7 +376,12 @@
             padding: 3px 6px;
         }
 
+        /* Keep the footer hidden only in print CSS; html2pdf needs it visible. */
         .pdf-mode footer {
+            display: block !important;
+        }
+
+        .pdf-mode .download-btn {
             display: none !important;
         }
 
@@ -709,7 +714,7 @@
         </main>
 
         <footer>
-            CV - Tristan Meszaros
+            CV à jour disponible sur cv.meszaros.fr - Tristan Meszaros
 
             <a class="download-btn" href="#" id="download-pdf">
                 Télécharger le CV en PDF
